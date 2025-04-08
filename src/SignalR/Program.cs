@@ -1,7 +1,7 @@
-using WebApi.Hubs;
-using WebApi.Infrastructure;
-using WebApi.Infrastructure.Repositories;
-using WebApi.Services;
+using SignalR.Hubs;
+using SignalR.Infrastructure.DbFactories;
+using SignalR.Infrastructure.Repositories;
+using SignalR.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,7 +1,7 @@
 using System.Data;
 using System.Data.Common;
 
-namespace WebApi.Infrastructure;
+namespace SignalR.Infrastructure.DbFactories;
 
 public interface IDbConnectionFactory
 {

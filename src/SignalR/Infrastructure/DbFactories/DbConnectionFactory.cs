@@ -2,7 +2,7 @@ using System.Data;
 using System.Data.Common;
 using Microsoft.Data.SqlClient;
 
-namespace WebApi.Infrastructure;
+namespace SignalR.Infrastructure.DbFactories;
 
 public class DbConnectionFactory(string connectionString) : IDbConnectionFactory
 {

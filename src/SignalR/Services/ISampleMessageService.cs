@@ -1,7 +1,7 @@
-﻿using System.Runtime.CompilerServices;
-using WebApi.Models;
+﻿using SignalR.Models;
+using System.Runtime.CompilerServices;
 
-namespace WebApi.Services
+namespace SignalR.Services
 {
     public interface ISampleMessageService
     {

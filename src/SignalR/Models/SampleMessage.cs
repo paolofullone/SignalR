@@ -1,4 +1,4 @@
-namespace WebApi.Models;
+namespace SignalR.Models;
 
 public class SampleMessage
 {

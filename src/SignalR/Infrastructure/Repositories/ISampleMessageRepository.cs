@@ -1,7 +1,7 @@
+using SignalR.Models;
 using System.Runtime.CompilerServices;
-using WebApi.Models;
 
-namespace WebApi.Infrastructure.Repositories;
+namespace SignalR.Infrastructure.Repositories;
 
 public interface ISampleMessageRepository
 {

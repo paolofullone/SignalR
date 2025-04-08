@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.SignalR;
+using SignalR.Models;
+using SignalR.Services;
 using System.Runtime.CompilerServices;
-using WebApi.Models;
-using WebApi.Services;
 
-namespace WebApi.Hubs;
+namespace SignalR.Hubs;
 
 public class SampleMessageHub(ISampleMessageService messageService) : Hub
 {

@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.AspNetCore.SignalR.Client;
-using WebApi.Models;
+using SignalR.Models;
 
 var taskCompSource = new TaskCompletionSource();
 
@@ -12,7 +12,7 @@ await taskCompSource.Task;
 
 static HubConnection InitializeConnection(TypeConnection type)
 {
-    string hubUrl = $"http://localhost:5055/{type.ToString()}";
+    string hubUrl = $"http://localhost:5500/{type.ToString()}";
     var connection = new HubConnectionBuilder().WithUrl(hubUrl).Build();
 
     connection.On<string>("ReceiveMessage", Console.WriteLine);
@@ -33,6 +33,7 @@ static async Task StartStreamAsync<T>(TypeConnection type)
 {
     try
     {
+        Thread.Sleep(5000); // delay to start both services together so the client doesn't request before server is ready.
         Console.WriteLine($"Starting Connection: {type.ToString()}");
         var connection = InitializeConnection(type);
         await connection.StartAsync();

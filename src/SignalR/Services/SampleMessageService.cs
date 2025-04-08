@@ -1,8 +1,8 @@
-﻿using System.Runtime.CompilerServices;
-using WebApi.Infrastructure.Repositories;
-using WebApi.Models;
+﻿using SignalR.Infrastructure.Repositories;
+using SignalR.Models;
+using System.Runtime.CompilerServices;
 
-namespace WebApi.Services
+namespace SignalR.Services
 {
     public class SampleMessageService(ISampleMessageRepository repository) : ISampleMessageService
     {
