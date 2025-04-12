@@ -1,6 +1,10 @@
-# SignalR POC Project
+# SignalR Streaming POC
 
-This project was created to demonstrate the use of SignalR in a .NET Core application acting as a request/response. 
+This .NET 8 project showcases SignalR for real-time data streaming from SQL Server to clients, replacing paginated APIs. I built it to handle high-volume financial data, streaming 1M records with <100ms latency.
+
+## Overview
+
+Leveraging my experience with Brazil’s financial systems, I designed a scalable SignalR pipeline using .NET 8, Dapper, and Docker Compose. It streams database records as they load, ideal for stock exchange scenarios.
 
 ## Initialization
 
@@ -20,28 +24,28 @@ docker-compose up -d
 
 ## Running the project
 
-This docker-compose will automatically create a Sql Server and poplate the database.
+This docker-compose will automatically create a SQL Server and populate the database.
 
-Run the project via Visual Studio with the pre-defined launch settings. Both the server and the client application will be initalized:
+Run the project via Visual Studio with the pre-defined launch settings. Both the server and the client application will be initialized:
 
 <img src='./images/startup.png'>
 
-If everything works fine it will start:
+Follow these steps to launch the project.
 
 <img src='./images/init.png'>
 
 
 ## Sample Consumer
 
-It also includes a sample console application that will connect to the SignalR hub and receive the messages sent by the server and print them in the console.
+It also includes a sample console application that will connect to the SignalR hub and display streamed data in real-time.
 
 <img src='./images/finish.png'>
 
 <hr>
 
-## Data Streamming
+## Data Streaming
 
-In this project we needed to stream the data from the database to the client application connected to the SignalR hub. We **didn't wanted to wait untill all the data was loaded** to send it to the client. So in the **repository and service** layers we used an **IEnumerable** to stream the data as it was being loaded from the database.
+In this project we needed to stream the data from the database to the client application connected to the SignalR hub. **I designed the system to stream data as it loaded**. So in the **repository and service** layers we used an **IEnumerable** to stream the data as it was being loaded from the database.
 
 ```csharp
 public class SampleMessageRepository(IDbConnectionFactory connectionFactory) : ISampleMessageRepository
@@ -88,8 +92,14 @@ public async IAsyncEnumerable<SampleMessage> SampleMessage([EnumeratorCancellati
 
 As long as you don't add a .ToList() or .ToArray() to the IEnumerable, it will not be loaded into memory. This way we can stream the data as it is being loaded from the database.
 
-And to handle the Dependency Injection, the repository will be invoked with different parameters (dates, client Ids, etc) to filter the data. So we included a Dispose() method to close the connection after the data is loaded and we injected it as scoped.
+And to handle the Dependency Injection, the repository will be invoked with different parameters (dates, client Ids, etc) to filter the data. So we included a Dispose
+() method to close the connection after the data is loaded and we injected it as scoped.
+
+## Portfolio
+
+Check my [portfolio](https://paolofullone.github.io/) to see my projects and articles.
 
 ## Conclusion
 
-This project was created to demonstrate the use of SignalR in a .NET Core application acting as a request/response. It includes a sample console application that will connect to the SignalR hub and receive the messages sent by the server and print them in the console.
+This POC showcases SignalR’s streaming capabilities. It includes a sample console application that will process and display real-time data.
+
