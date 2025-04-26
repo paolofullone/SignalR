@@ -22,6 +22,10 @@ Then run the following command in the root folder of the project:
 docker-compose up -d
 ```
 
+We should see the respective scripts loaded in mssql-tools:
+
+<img src='./images/SignalR-docker.png'>
+
 ## Running the project
 
 This docker-compose will automatically create a SQL Server and populate the database.
